@@ -7,3 +7,4 @@ Things to consider:
 - Try to write tests that verify that an attacker can not do anything harmful.
 - Tests should be independent and atomic.
 - If the code to test throws an exception anywhere then for this case tests must check if there is a defined crash-behavior without revealing any sensitive information.
+- Write more tests if the user explicitly asks for it.
