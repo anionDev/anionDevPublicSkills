@@ -8,3 +8,4 @@ Things to consider:
 - Tests should be independent and atomic.
 - If the code to test throws an exception anywhere then for this case tests must check if there is a defined crash-behavior without revealing any sensitive information.
 - Write more tests if the user explicitly asks for it.
+If the repository defines any rules/scripts for tests, etc. then follow them.
