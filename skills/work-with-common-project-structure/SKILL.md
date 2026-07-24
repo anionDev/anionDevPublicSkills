@@ -1,6 +1,8 @@
 ---
 name: work-with-common-project-structure
 description: Contains information about the "common project structure" and how to work with it.
+purpose: "Information about repository-conventions."
+version: 1.0.0
 ---
 The "common project structure" is a set of conventions and best practices for organizing and structuring a software project defined by: https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/raw/main/Conventions/RepositoryStructure/CommonProjectStructure/CommonProjectStructure.md
 The usual pipeline-command to run all scripts (for building, linting, etc.) is `scbuildcodeunit` which runs all scripts directly on the machine.

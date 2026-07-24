@@ -1,6 +1,8 @@
 ---
 name: fix-dotnet-nullcheck-warnings
 description: Fixes warnings regarding null and null-references in .NET-projects.
+purpose: "Maintenance for repositories."
+version: 1.0.0
 ---
 
 # Skill fix-dotnet-nullcheck-warnings

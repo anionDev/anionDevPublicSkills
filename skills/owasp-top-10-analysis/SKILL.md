@@ -1,6 +1,8 @@
 ---
 name: owasp-top-10-analysis
 description: Analyze a repository for security weaknesses based on the OWASP Top 10 and provide actionable remediation advice.
+purpose: "Analysis for repositories."
+version: 1.0.0
 ---
 Perform a repository security analysis focused on the OWASP Top 10.
 Before starting the analysis, research the latest official OWASP Top 10 list/version and use that as the baseline for all findings.

@@ -1,6 +1,8 @@
 ---
 name: small-fix
 description: Do a small fix in a source-code-repository.
+purpose: "Maintenance for repositories."
+version: 1.0.0
 ---
 Implement a small fix in the repository if possible.
 Your change must fix a concrete clear bug.
