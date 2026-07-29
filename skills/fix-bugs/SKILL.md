@@ -2,7 +2,7 @@
 name: fix-bugs
 description: Fixes bugs in a project.
 purpose: "Maintenance for repositories."
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Skill fix-bugs
@@ -34,9 +34,30 @@ A bug is a **provable deviation between the intended behaviour and the actual be
 intent must come from a source, not from your taste: specification, documentation, doc comments,
 tests, type/API contracts, an invariant the surrounding code relies on, or unambiguous domain logic.
 
+The following count as bugs as well, even when the program itself runs without an error:
+
+- **Broken references inside the repository.** A file references another file of the same repository
+  and that target does not exist. This covers all kinds of files, not only source code: relative
+  links in Markdown and other documentation, paths in configuration, build, CI and container files,
+  script and tooling paths, includes/imports of repository-local files, and referenced images or
+  other assets. The reference is the intent; a missing target is a provable deviation from it.
+  References to targets *outside* the repository (external URLs, files provided by the environment,
+  files generated during the build) are not part of this — treat them as out of scope unless the
+  repository itself claims they are checked in.
+- **Divergence between code and documentation.** The documented behaviour and the implemented
+  behaviour disagree. "Documentation" here means both doc comments (for example XML doc comments,
+  docstrings, Javadoc) and documentation as text files (`README`, reference documentation, manuals,
+  specifications inside the repository). Typical cases: a documented parameter, return value,
+  exception, default value, unit or range that the code does not implement; a documented option,
+  command, environment variable or configuration key that does not exist (or exists under another
+  name); a doc comment that still describes an earlier version of the function; documented behaviour
+  for an edge case that the code handles differently.
+
 Not a bug, and therefore out of scope: code you find ugly, a style you would have written
 differently, a missing feature, a deliberate documented trade-off, or a hypothetical problem you
-cannot show a concrete failing path for.
+cannot show a concrete failing path for. Documentation that is merely *incomplete* — it says nothing
+about a behaviour — is not a divergence and belongs to `write-documentation`; only a documented
+statement that contradicts the code is a bug here.
 
 ## Workflow
 
@@ -63,6 +84,14 @@ Look where bugs actually live:
 - Concurrency: shared mutable state, missing awaits, blocking calls in async paths, races.
 - State machines and invariants: is every reachable state actually handled?
 - Copy-paste sites that drifted apart — the same rule implemented twice with different behaviour.
+- Repository-local references: collect the referenced paths (links in Markdown, paths in
+  configuration/build/CI files, script paths, repository-local includes, referenced assets) and
+  check for each whether the target exists — including case, which matters on Linux even when the
+  repository is developed on Windows. Resolve relative paths against the referencing file.
+- Documentation against code: read the doc comment of a function together with its implementation,
+  and the documented options/commands/configuration keys of the reference documentation against
+  what the code actually offers. Places where code changed recently but the surrounding
+  documentation did not are the most productive spots.
 - `git log --grep='fix\|bug\|hotfix\|workaround' -i` — where fixes cluster, defects cluster.
 
 ### 3. Verify each candidate before doing anything
@@ -75,6 +104,15 @@ For every candidate, produce **evidence**:
 
 Then check that it is reachable at all. If you cannot show a concrete failing path, it is a
 suspicion, not a finding — list it as such, and never fix a suspicion.
+
+For a broken reference the evidence is: the referencing file and line, the resolved target path, and
+the proof that this target does not exist in the repository — plus the check that it is really meant
+to be a repository-local file and not something external or generated.
+
+For a code/documentation divergence the evidence is: the documenting location (file and line of the
+doc comment or documentation file), the implementing location, and the exact statement that
+contradicts the implementation. Additionally determine which of the two sides is wrong — that is
+part of the finding, not of the fix.
 
 ### 4. Find the root cause
 
@@ -113,6 +151,15 @@ Per bug, one focused change:
 - Add or adjust a test that fails before the fix and passes after it. If the repository has no test
   setup for that code, say so instead of silently skipping the test.
 - Keep the style, naming and idioms of the surrounding code.
+- For a broken reference: fix it at its cause. If the target was moved or renamed, point the
+  reference at the actual target. If the reference belongs to something that no longer exists,
+  remove the reference together with the statement that carries it — do not silently delete a link
+  and leave a sentence behind that now claims something untrue. If the target is missing because a
+  file was lost, say so and document it; do not invent a replacement file.
+- For a code/documentation divergence: correct the side that is wrong. If the documentation
+  describes the intended behaviour and the code does not implement it, the code is the bug. If the
+  code is correct and the documentation is stale, the documentation is the bug and gets updated. If
+  it is not decidable which side represents the intent, do not choose — document it and ask.
 - Do not mix in refactorings, reformatting or unrelated improvements.
 - Run the build and the tests, and compare against the baseline from step 1. If the fix breaks
   something you cannot resolve cleanly, revert it and move the bug to the documented list.
@@ -140,6 +187,11 @@ tests honestly — if something fails or was skipped, say so with the output.
 - Adding a retry, a sleep, a flag or a fallback to hide a race or a broken contract.
 - Disabling, skipping, weakening or rewriting a test so it passes.
 - Suppressing a warning instead of fixing what it points at.
+- Deleting a broken reference (or the documentation containing it) instead of pointing it at the
+  target that was actually meant.
+- Creating an empty placeholder file so that a broken reference resolves.
+- Adjusting the documentation to the code although the code is what deviates from the intent — or
+  the other way round — without having established which side is right.
 - Leaving a `TODO`/`FIXME` as a substitute for either a fix or a report entry.
 - Working around a defect that is caused by another repository.
 - Bundling opportunistic refactorings into a bug fix.
@@ -150,6 +202,10 @@ tests honestly — if something fails or was skipped, say so with the output.
 
 - Scope stated, exclusions named, build/test baseline established?
 - Every finding backed by location, trigger and the source of the intended behaviour?
+- Repository-local references checked for existing targets (including case), external and generated
+  targets excluded?
+- Doc comments and documentation files compared against the implementation, and for every divergence
+  stated which of the two sides is wrong?
 - Root cause identified for each fix — not only the symptom location?
 - Every fix free of workarounds and free of new technical debt?
 - Every fix covered by a test that failed before?
