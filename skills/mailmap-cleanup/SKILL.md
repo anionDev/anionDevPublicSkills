@@ -2,6 +2,7 @@
 name: mailmap-cleanup
 description: Builds or cleans up a git .mailmap file for a repository, consolidating duplicate author identities (typo domains, GitHub noreply emails, AD usernames, case variants) into canonical names/emails. Use when the user asks to deduplicate git authors, "clean up" or "aufräumen" the .mailmap, or normalize `git log`/`git shortlog` author lists.
 purpose: "Maintenance for repositories."
+tags: maintenance, git
 version: 1.0.0
 ---
 

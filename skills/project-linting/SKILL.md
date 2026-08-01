@@ -2,6 +2,7 @@
 name: project-linting
 description: Does basic linting for the project which is not buiness-logic-specific.
 purpose: "Maintenance for repositories."
+tags: maintenance, linting
 version: 1.0.0
 ---
 Do the following things in this repository (not in the submodules):

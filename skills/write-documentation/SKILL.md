@@ -2,6 +2,7 @@
 name: write-documentation
 description: Writes and updates the non-business-logic documentation of a repository (readme, doc-comments for non-trivial functions, reference-folder documentation), verifies that the documented instructions actually work, and removes documentation that has become wrong. Use when the user asks to write, complete, update or check the documentation of a repository.
 purpose: "Development for repositories."
+tags: development, documentation
 version: 1.1.0
 ---
 

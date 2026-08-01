@@ -2,6 +2,7 @@
 name: repository-debt-analysis
 description: Analyzes a repository for technical debt and non-functional weaknesses (code smells, duplication, structural erosion, missing tests, outdated dependencies, undocumented decisions) and produces a prioritized, evidence-based report. Read-only analysis, this skill does not change any file. Use when the user asks for a technical-debt analysis, a maintainability assessment, a refactoring backlog, or "where is this repository rotting".
 purpose: "Analysis for repositories."
+tags: analysis, technical-debt
 version: 1.1.0
 ---
 

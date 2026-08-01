@@ -2,6 +2,7 @@
 name: fix-merge-conflicts
 description: Resolves complicated merge conflicts in a git repository (merge, rebase, cherry-pick or stash-pop conflicts), by reconstructing the intent of both sides from the history instead of guessing from the conflict markers. Use when the user asks to resolve/fix merge conflicts, when a merge, rebase or cherry-pick stopped with conflicts, or when a conflict is too large or too semantic to resolve by simply picking one side.
 purpose: "Maintenance for repositories."
+tags: maintenance, git
 version: 1.0.0
 ---
 

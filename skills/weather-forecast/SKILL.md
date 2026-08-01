@@ -2,6 +2,7 @@
 name: weather-forecast
 description: "Fetches weather data and presents it to the user as a short, human-readable weather report."
 purpose: "Test and demonstrate the AI's ability to fetch and process data."
+tags: ai-self-test
 version: 1.0.0
 ---
 

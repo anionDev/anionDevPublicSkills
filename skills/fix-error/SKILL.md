@@ -2,6 +2,7 @@
 name: fix-error
 description: Fixes a certain error.
 purpose: "Maintenance for repositories."
+tags: maintenance
 version: 1.0.0
 ---
 This skill requires any information to identify a concrete error.

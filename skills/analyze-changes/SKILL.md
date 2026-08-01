@@ -2,6 +2,7 @@
 name: analyze-changes
 description: Analyze the changes on the current branch.
 purpose: "Analysis for repositories."
+tags: analysis, git
 version: 1.0.0
 ---
 

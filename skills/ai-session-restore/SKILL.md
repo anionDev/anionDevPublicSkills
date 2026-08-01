@@ -2,6 +2,7 @@
 name: ai-session-restore
 description: Imports an AI-session-export which was created with the ai-session-save-skill into the current session, verifies it against the actual state of the repository and continues the work from there.
 purpose: "Session-management for AI-sessions."
+tags: session-management
 version: 1.0.0
 ---
 

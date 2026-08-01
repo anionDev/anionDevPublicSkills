@@ -2,6 +2,7 @@
 name: ai-session-save
 description: Exports the context of the current AI-session (knowledge, decisions, state, permissions, next steps) as one copy-pasteable block so that it can be imported later into a new session using the ai-session-restore-skill.
 purpose: "Session-management for AI-sessions."
+tags: session-management
 version: 1.0.0
 ---
 

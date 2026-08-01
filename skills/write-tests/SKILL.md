@@ -2,6 +2,7 @@
 name: write-tests
 description: Ensures that there are tests for the most important functions of the project, by finding the untested code that actually carries risk, writing independent and atomic tests for it (including defined crash-behavior and abuse cases), and verifying that the new tests run green in the repository's own test setup. Use when the user asks to write, add or complete unit-tests, or when another skill requires test coverage.
 purpose: "Development for repositories."
+tags: development, testing
 version: 1.1.0
 ---
 

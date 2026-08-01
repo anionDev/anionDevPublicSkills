@@ -2,6 +2,7 @@
 name: show-ai-capabilities
 description: Shows the AI capabilities of the current environment.
 purpose: "Information about the current AI-environment."
+tags: information, ai-self-test
 version: 1.0.0
 ---
 Just print the following information and do nothing more than that:
