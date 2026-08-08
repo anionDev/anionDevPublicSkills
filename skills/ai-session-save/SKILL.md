@@ -81,7 +81,7 @@ If a secret is relevant for the work, write only *that* it is needed and *where*
 ### 5. Write the export
 
 Print the export as one fenced block, fenced with **four** backticks so that inner code-fences
-survive the copy-pasting. Print nothing between the fences except the export itself.
+survive the copy-pasting. Print nothing between the fences except the export itself. Always add a timestamp and a proper title to the export.
 
 Use exactly this structure and keep the headings unchanged — `ai-session-restore` relies on them:
 
