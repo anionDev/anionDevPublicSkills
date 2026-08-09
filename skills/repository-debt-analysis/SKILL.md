@@ -143,9 +143,9 @@ For the hotspots from Step 2, and for the repository as a whole, assess:
 - Dependencies: outdated or unmaintained packages, multiple libraries doing the same job, pinned
   ancient versions, direct dependencies that are actually transitive. Note end-of-life runtimes and
   frameworks explicitly — those are the most expensive debt items in any repository.
-- Build/CI: slow or flaky builds, manual release steps, disabled/skipped tests, suppressed warnings
+- Build/CI: slow or flaky builds/tests, manual release steps, disabled/skipped tests, suppressed warnings
   and lint rules (`#pragma warning disable`, `// eslint-disable`, `[SuppressMessage]`) — count them
-  and check whether each is justified.
+  and check whether each is justified or marked as accepted.
 - Missing safety net: which critical paths have no automated test at all? Debt is much more
   expensive where there is no test to catch the consequences.
 - Knowledge debt: components with a single author, undocumented non-obvious decisions, no ADRs
