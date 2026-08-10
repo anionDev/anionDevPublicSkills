@@ -26,6 +26,8 @@ Never git-stage or git-unstage changes which were not done by you, unless the us
 
 Use clean-code-principles when developing code.
 Use design-pattern when developing code when it is useful. To check whether it would be useful think about advantages for the future like a better overview and extensibility.
+Never developing a loop which waits until something works which tries again on fail unless the user explicitly asks for it.
+Never developing an exception-catchings-mechanism when the catch-block is doing basically the same but on another way as fallback-mechanism unless the user explicitly asks for it.
 
 ## Intermediate-statement
 
