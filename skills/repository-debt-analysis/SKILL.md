@@ -46,6 +46,7 @@ their subject areas as debt items when they are relevant:
 | Missing unit tests | `write-tests` | Report test-coverage debt as a structural finding (which critical areas are untested), not as a list of individual missing tests. |
 | Missing/outdated documentation | `write-documentation` | Report documentation debt where it blocks maintenance (undocumented architecture, dead README instructions), not stylistic doc issues. |
 | Deviation from the repository conventions | `work-with-common-project-structure` | If the repository follows the "common project structure", check it against those conventions and report deviations as structural debt. |
+| Deviation from the project's specifications | `specification-verification` | Use the `specification-verification`-skill to check whether all specifications (for example specifications managed by openspec) are implemented correctly, if the project has any. Every deviation from the specifications is technical debt and must be reported as a finding here. |
 
 Everything else — code smells, duplication, architectural erosion, dependency rot, build/CI debt,
 process debt — is this skill's own subject.
