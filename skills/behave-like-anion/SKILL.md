@@ -30,6 +30,7 @@ Never developing a loop which waits until something works which tries again on f
 Never developing an exception-catchings-mechanism when the catch-block is doing basically the same but on another way as fallback-mechanism unless the user explicitly asks for it.
 Avoid Spaghetti-code. Try to make related changes at similar places as much as possible.
 Always follow existing coding-style and coding-conventions.
+Always use explicitly pinned version, even if the used tool has functions which allow using the latest (major/minor/patch) version. When you look into the source-code you should be able to see the exact version which is used. This is important for reproducibility and for security analysis.
 
 ## Intermediate-statement
 
