@@ -3,7 +3,7 @@ name: repository-debt-analysis
 description: Analyzes a repository for technical debt and non-functional weaknesses (code smells, duplication, structural erosion, missing tests, outdated dependencies, undocumented decisions) and produces a prioritized, evidence-based report. Read-only analysis, this skill does not change any file. Use when the user asks for a technical-debt analysis, a maintainability assessment, a refactoring backlog, or "where is this repository rotting".
 purpose: "Analysis for repositories."
 tags: analysis, technical-debt
-version: 1.1.0
+version: 1.1.1
 ---
 
 # Repository Technical-Debt Analysis
@@ -149,6 +149,14 @@ For the hotspots from Step 2, and for the repository as a whole, assess:
   and check whether each is justified or marked as accepted.
 - Missing safety net: which critical paths have no automated test at all? Debt is much more
   expensive where there is no test to catch the consequences.
+- Testcases which demand more of the system than the code-under-test does: a testcase which is only
+  green when a certain locale, timezone, path, tool, network-access or environment-variable is
+  present, although the code it tests does not require that, is debt as well. The test then does not
+  state a property of the code but a property of the machine it happened to be written on, so it
+  fails for whoever has a different machine — and the usual reaction (adapt the expectation to the
+  local machine) makes it worse. Either the requirement belongs into the code-under-test (then state
+  it there, for example by pinning the culture instead of relying on the current one), or it belongs
+  out of the testcase.
 - Knowledge debt: components with a single author, undocumented non-obvious decisions, no ADRs
   (see the `domain-modeling` skill if the repository maintains a domain model).
 

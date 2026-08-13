@@ -3,7 +3,7 @@ name: write-tests
 description: Ensures that there are tests for the most important functions of the project, by finding the untested code that actually carries risk, writing independent and atomic tests for it (including defined crash-behavior and abuse cases), and verifying that the new tests run green in the repository's own test setup. Use when the user asks to write, add or complete unit-tests, or when another skill requires test coverage.
 purpose: "Development for repositories."
 tags: development, testing
-version: 1.1.0
+version: 1.1.1
 ---
 
 # Write Tests
@@ -103,6 +103,7 @@ Hard rules:
 - **Mock only what you must**: external systems, non-determinism and slow dependencies. Do not mock
   the code under test's own collaborators when the real ones are cheap and deterministic — over-
   mocked tests assert that the code calls itself the way it currently does, and nothing more.
+- **Independent**: The tests must not depend on each other. Each test must be able to run independently of the others and in any order. The tests must not share state or rely on side effects from other tests. Each test should set up its own environment and clean up after itself. A test is not allowed to add requirements to the test environment or to the system itself that are not already present in the repository's test setup.
 
 Cover per selected function: the normal case, the meaningful boundary values (empty, zero, one,
 maximum, off-by-one edges), and the invalid/hostile inputs.
