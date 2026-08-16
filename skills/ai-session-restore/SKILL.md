@@ -31,9 +31,8 @@ this skill lies as much in detecting that drift as in loading the context.
 In this order:
 
 1. If the user pasted the export into the prompt, use it.
-2. If the user named a file, read it with the `read-file-content`-skill.
-3. If neither, ask the user for the export. Do **not** try to reconstruct it from git-history,
-   changelogs or guesswork — a fabricated context is worse than no context.
+2. If the user named a file, read it.
+3. If neither, ask the user for the export. Do **not** try to reconstruct it from git-history, changelogs or guesswork — a fabricated context is worse than no context.
 
 Check that the block starts with `# AI-Session-Export` and carries a `Format-version`. If the
 format-version is higher than 1, say so and read it as best as possible, but tell the user that
@@ -99,8 +98,6 @@ before building on it.
   which ones are missing and what is blocked by that.
 - If the export refers to a skill which is not available in this session, do not work around it:
   abort the affected part and tell the user that this skill has to be made available.
-- If the export refers to secrets or to a `SensitiveInformation`-folder which is not available, say
-  so and tell the user that they can make it available.
 
 ### 6. Continue the work
 
