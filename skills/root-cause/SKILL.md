@@ -19,6 +19,7 @@ There may be services which ues other services which are all developed by us.
 ## Data-issues
 
 The root-cause of a data-set-problem is the original reason why a wrong data-set comes into our system.
+If possible also explain if data is corrupt permanently or if it is just a temporary problem or if there is a auto-heal-mechanism which will fix the data automatically.
 
 ## Program-issues
 
