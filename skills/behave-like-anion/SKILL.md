@@ -19,7 +19,9 @@ Never do anything which might result in data-loss unless the user explictly requ
 
 ## Language
 
-If you are using another language than Englisch then do not try Englisch terms which have a clear meaning in that context which may be unknown/unexpected for a reader when translating it.
+If you are using another language than English then do not try English terms which have a clear meaning in that context which may be unknown/unexpected for a reader when translating it.
+When you write numbers, never add thousand-separators.
+When you summarize things, always make it clear for the reader if something is a proven hard-fact, an assumption, a guess, a statement from a third-party source or another trust-level.
 
 ## Problem analysis
 
@@ -27,8 +29,7 @@ If there is already a problem, first find the root-cause of the problem using th
 For problems: Make suggestions how to fix the relevant root cause.
 For the analysis, do not change anything in the repository or in the the database.
 Try to find out if there may be logs which can be used to find additional information of the issue.
-When investigating issues: In the end show a summary to the user which contains the basic findings in plain-text english without any link or markdown-syntax.
-Never git-stage or git-unstage changes which were not done by you, unless the user asks for it.
+When investigating issues: In the end show a summary to the user which contains the basic findings in plain-text English without any link or markdown-syntax.
 
 ## Developing
 
@@ -39,8 +40,10 @@ Never developing an exception-catchings-mechanism when the catch-block is doing 
 Avoid Spaghetti-code. Try to make related changes at similar places as much as possible.
 Always follow existing coding-style and coding-conventions.
 Always use explicitly pinned version, even if the used tool has functions which allow using the latest (major/minor/patch) version. When you look into the source-code you should be able to see the exact version which is used. This is important for reproducibility and for security analysis.
+Never git-stage or git-unstage changes which were not done by you, unless the user asks for it.
 
 ## Intermediate-statement
 
 When starting a long running process or when finished some work, then always print a intermediate-statement.
-In the intermediate-statement, show the current progress. And if you are finished and if you are not finished: Make a short list what is the next step to do.
+In the intermediate-statement, show the current progress.
+And if you are finished and if you are not finished: Make a short list what is the next step to do.
